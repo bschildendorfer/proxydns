@@ -1,4 +1,4 @@
-package proxydns
+package example
 
 import (
 	"bytes"
@@ -11,9 +11,9 @@ import (
 	"github.com/miekg/dns"
 )
 
-func TestProxydns(t *testing.T) {
+func TestExample(t *testing.T) {
 	// Create a new Example Plugin. Use the test.ErrorHandler as the next plugin.
-	x := Proxydns{Next: test.ErrorHandler()}
+	x := Example{Next: test.ErrorHandler()}
 
 	// Setup a new output buffer that is *not* standard output, so we can check if
 	// example is really being printed.
@@ -29,7 +29,7 @@ func TestProxydns(t *testing.T) {
 
 	// Call our plugin directly, and check the result.
 	x.ServeDNS(ctx, rec, r)
-	if a := b.String(); a != "proxydns\n" {
-		t.Errorf("Failed to print '%s', got %s", proxydns, a)
+	if a := b.String(); a != "example\n" {
+		t.Errorf("Failed to print '%s', got %s", example, a)
 	}
 }
